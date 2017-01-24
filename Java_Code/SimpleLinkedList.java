@@ -1,12 +1,48 @@
-class SimpleLinkedList
+public class SimpleLinkedList
 {
 	private int head;
-	private SimpleLinkedList next;
+	private SimpleLinkedList tail;
 	
 	public SimpleLinkedList(int head, SimpleLinkedList simpleLinkedList)
 	{
 		this.head = head;
-		this.next = simpleLinkedList;
+		this.tail = simpleLinkedList;
+	}
+
+     /** Returns the size of list using recusrion 
+     **/
+	public int size()
+	{
+		if(tail == null)
+			return 1;
+
+		return 1 + tail.size();
+	}
+
+	/** Returns the size of list using no-recusrion 
+     **/
+
+	public int iterativeSize()
+	{
+		SimpleLinkedList p = this;
+		int sum = 0;
+		while(p != null)
+		{
+			sum += 1;
+			p = p.tail;
+		}
+		return sum;
+	}
+
+	/** Returns the ith item of the lis
+	where front item is item 0 */
+
+	public int get(int i)
+	{
+		if(i == 0)
+			return head;
+
+		return tail.get(i - 1);
 	}
 
 	public static void main(String[] args) {
@@ -16,11 +52,15 @@ class SimpleLinkedList
 
 		/* Print the first node */
 		System.out.println(simpleLinkedList.head);
-		/* Print the next to first node */
-		System.out.println(simpleLinkedList.next);
+		/* Print the tail to first node */
+		System.out.println(simpleLinkedList.tail);
+		System.out.println(simpleLinkedList.iterativeSize());
+		System.out.println(simpleLinkedList.size());
+		System.out.println(simpleLinkedList.get(1));
+
 
 		/* OR
-		System.out.println(simpleLinkedList.next.head);
+		System.out.println(simpleLinkedList.tail.head);
 		*/
 
 
