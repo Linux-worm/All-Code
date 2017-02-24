@@ -205,9 +205,9 @@ public class SinglyLinkedList
 		{
 			out.println("Enter 1 for Insert");
 			out.println("Enter 2 for Delete");
-			out.println("Enter 3 for length of the List");
+			out.println("Enter 3 to get the  length of the List");
 			out.println("Enter 4 to find the middle node of the list");
-			out.println("Enter 5 for Display the List");
+			out.println("Enter 5 to Display the List");
 			out.println("Enter your choice from above");
 			choice = sc.nextInt();
 
