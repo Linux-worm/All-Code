@@ -101,6 +101,22 @@ public class SinglyLinkedList
 		out.println("NULL");	
 	}
 
+
+	/** Display List using toString function 
+	public String toString()
+	{
+		String result = "Head->";
+		Node temp = head;
+		while(temp != null)
+		{
+			result += temp.data+"->";
+			temp = temp.next;
+		}
+		result += "Null";
+		return result;
+	}
+	*/
+
 	/** Delete the node from the start of the list */
 	public static Node deleteFromStart()
 	{
@@ -189,6 +205,29 @@ public class SinglyLinkedList
 		return head;
 	}
 
+	/** Find the element position */
+	public static int findPosition(int data)
+	{
+		Node temp = head;
+		int position = 1;
+		while(temp != null)
+		{
+			if(temp.data == data)
+				return position;
+			temp = temp.next;
+			position += 1;
+		}
+		return Integer.MIN_VALUE;
+	}
+
+	/** Remove everything from the List */
+	public void clearAll()
+	{
+		head = null;
+		length = 0;
+	}
+
+	/** Main method */
 	static public void main(String [] args)
 	{
 		Scanner sc = new Scanner(in);
@@ -208,6 +247,7 @@ public class SinglyLinkedList
 			out.println("Enter 3 to get the  length of the List");
 			out.println("Enter 4 to find the middle node of the list");
 			out.println("Enter 5 to Display the List");
+			out.println("Enter 6 to find the position of a node");
 			out.println("Enter your choice from above");
 			choice = sc.nextInt();
 
@@ -235,12 +275,17 @@ public class SinglyLinkedList
 					out.println("The list is:");
 					display(head);	
 					break;
+				case 6:
+					out.println("Enter the data to be searched");
+					int da = sc.nextInt();
+					out.println("The position of "+da+" is:"+findPosition(da)); 	
+					break;
 				default:
 					out.println("Invalid Choice enter your choice from above");
 			}
 			out.println("Want more(Y/n)");
 			ans = sc.next().charAt(0);
 		}
-		while(ans == 'y' || ans == 'Y');
-	}
+		while(ans == 'y' || ans == 'Y'); 		
+	}	
 }
