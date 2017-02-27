@@ -189,21 +189,31 @@ public class SinglyLinkedList
 	}
 
 	/** Delete a node with given data */
-	public static Node deleteWithData(int d)
+	public static Node deleteWithData(Node a)
 	{
 		Node temp = head;
 		Node current = head.next;
 		while(temp != null)
 		{
-			if(current.data == d)
+			if(a.data == current.data)   //if(current.data == a)
+			{
 				temp.next = current.next;
+				return head;
+			}
 			temp = temp.next;
 			current = current.next;
-
 		}
 		length -= 1;
 		return head;
 	}
+
+	/** Checks for the equslity of two objects 
+	public boolean equals(Object o)
+	{
+		Node temp = (Node) o;
+		return (temp.data == data);
+	}
+	*/
 
 	/** Find the element position */
 	public static int findPosition(int data)
@@ -238,6 +248,7 @@ public class SinglyLinkedList
 			int data = sc.nextInt();
 			insertAtEnd(data);
 		}
+		display(head);
 		int choice = 0;
 		char ans = ' ';
 		do
@@ -248,6 +259,7 @@ public class SinglyLinkedList
 			out.println("Enter 4 to find the middle node of the list");
 			out.println("Enter 5 to Display the List");
 			out.println("Enter 6 to find the position of a node");
+			out.println("Enter 7 to Delete a node with given node");
 			out.println("Enter your choice from above");
 			choice = sc.nextInt();
 
@@ -269,7 +281,7 @@ public class SinglyLinkedList
 					out.println("The length of the List is:"+length);
 					break;
 				case 4:
-					out.println("The middle if the List is:"+findMiddle());
+					out.println("The middle of the List is:"+findMiddle());
 					break;
 				case 5:
 					out.println("The list is:");
@@ -280,12 +292,18 @@ public class SinglyLinkedList
 					int da = sc.nextInt();
 					out.println("The position of "+da+" is:"+findPosition(da)); 	
 					break;
+				case 7:
+					out.println("Enter the data/Node to be deleted");
+					int a = sc.nextInt();
+					Node b = new Node(a);
+					deleteWithData(b);
+					break;	
 				default:
 					out.println("Invalid Choice enter your choice from above");
 			}
 			out.println("Want more(Y/n)");
 			ans = sc.next().charAt(0);
 		}
-		while(ans == 'y' || ans == 'Y'); 		
+		while(ans == 'y' || ans == 'Y'); 	
 	}	
 }
