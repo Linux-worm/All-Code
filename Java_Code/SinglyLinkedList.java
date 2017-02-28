@@ -237,6 +237,21 @@ public class SinglyLinkedList
 		length = 0;
 	}
 
+	/** Checks whether a List has Cycle */
+	public static boolean hasCycle(Node head)
+	{
+		Node slow = head;
+		Node fast = head;
+		while(slow != null && fast != null && fast.next != null)
+		{
+			slow = slow.next;
+			fast = fast.next.next;
+			if(slow.equals(fast))
+				return true;
+		}
+		return false;
+	}
+
 	/** Main method */
 	static public void main(String [] args)
 	{
@@ -304,6 +319,12 @@ public class SinglyLinkedList
 			out.println("Want more(Y/n)");
 			ans = sc.next().charAt(0);
 		}
-		while(ans == 'y' || ans == 'Y'); 	
+		while(ans == 'y' || ans == 'Y'); 
+
+		if(hasCycle(head))
+			out.println("The List has Cycle");
+		else
+			out.println("The List does not contain cycle");		
+
 	}	
 }
