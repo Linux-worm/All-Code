@@ -101,6 +101,16 @@ public class SinglyLinkedList
 		out.println("NULL");	
 	}
 
+	/** Display the List in reverse order */
+	public void displayReverse(Node head)
+	{
+		out.print("Null->");
+		if(head == null) return;
+		displayReverse(head.next);
+		out.print(head.data+"->");
+		out.println("Head");
+	}
+
 
 	/** Display List using toString function 
 	public String toString()
@@ -231,7 +241,7 @@ public class SinglyLinkedList
 	}
 
 	/** Remove everything from the List */
-	public void clearAll()
+	public static void clearAll()
 	{
 		head = null;
 		length = 0;
@@ -251,7 +261,7 @@ public class SinglyLinkedList
 		}
 		return false;
 	}
-
+	
 	/** Main method */
 	static public void main(String [] args)
 	{
@@ -320,7 +330,13 @@ public class SinglyLinkedList
 			ans = sc.next().charAt(0);
 		}
 		while(ans == 'y' || ans == 'Y'); 
-
+		clearAll();
+		insertAtPosition(1, 3);
+		insertAtPosition(2,5);
+		insertAtPosition(3,4 );
+		insertAtPosition(4,2 ); 
+		insertAtPosition(2,10 );
+		display(head);
 		if(hasCycle(head))
 			out.println("The List has Cycle");
 		else

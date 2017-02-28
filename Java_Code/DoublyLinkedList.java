@@ -254,6 +254,16 @@ public class DoublyLinkedList
 		out.println("NULL");
 	}
 
+	/** Display the List in reverse order */
+	public static void displayReverse(Node head)
+	{
+		if(head == null)
+			return;
+		displayReverse(head.next);
+		out.print(head.data+"<=>");
+		
+	}
+
 	/** Clear the List */
 	public static void clearAll()
 	{
@@ -285,6 +295,7 @@ public class DoublyLinkedList
 			out.println("Enter 7 to Delete a node with given node");
 			out.println("Enter 8 to delete List completely");
 			out.println("Enter 9 to check whether is List is empty or not");
+			out.println("Enter 10 to print the List in reverse order");
 			out.println("Enter your choice from above");
 			choice = sc.nextInt();
 			int p = 0, d = 0;
@@ -332,6 +343,11 @@ public class DoublyLinkedList
 					else
 						out.println("The list is not empty");
 					break;
+				case 10:
+					out.print("Null<=>");
+					displayReverse(head);
+					out.println("Head");
+					break;	
 				default:
 					out.println("Invalid choice, Enter your choice from above");
 					break;						
@@ -339,7 +355,6 @@ public class DoublyLinkedList
 			out.println("Want more(Y/n)");
 			ans = sc.next().charAt(0);
 		}
-		while(ans == 'y' || ans == 'Y'); 	
+		while(ans == 'y' || ans == 'Y'); 
 	}
-
 }
