@@ -150,13 +150,8 @@ public class SinglyLinkedList
 			return head;
 		}
 		Node temp = head;
-		Node current = head.next;
-
-		while(current.next != null)
-		{
+		while(temp.next.next != null)
 			temp = temp.next;
-			current = current.next;
-		}
 		temp.next = null;
 		length -= 1;
 		return head;
@@ -177,13 +172,9 @@ public class SinglyLinkedList
 		else
 		{
 			Node temp = head;
-			Node current = head.next;
 			for(int i = 1; i < position - 1; i++)
-			{
 				temp = temp.next;
-				current = current.next;
-			}
-			temp.next = current.next;
+			temp.next = temp.next.next;
 			length -= 1;
 		}	
 		return head;
